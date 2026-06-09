@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tigris Jewelry 2026 | Official Luxury Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Urbanist:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* LUXURY DESIGN SYSTEM */
+        :root {
+            --bg-dark: #050505;
+            --bg-card: #0a0a0a;
+            --gold: #c4a052;
+            --gold-hover: #e5c173;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --border-color: #1a1a1a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Urbanist', sans-serif;
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        header {
+            background-color: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed; width: 100%; top: 0; left: 0;
+            z-index: 1000; backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; padding: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif; font-size: 24px;
+            font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
+        }
+
+        .logo span { color: var(--gold); }
+
+        nav a {
+            color: var(--text-light); text-decoration: none; text-transform: uppercase;
+            font-size: 14px; letter-spacing: 2px; margin-left: 30px;
+            transition: color 0.3s; cursor: pointer;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        /* PAGES MANAGER (SPA) */
+        .app-page { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .app-page.active { display: block; opacity: 1; }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; padding: 140px 20px 60px 20px;
+            background: radial-gradient(circle at center, rgba(196, 160, 182, 0.1) 0%, rgba(5, 5, 5, 0.8) 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 300;
+            line-height: 1.1; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 4px;
+        }
+
+        .hero-text h1 span { color: var(--gold); font-weight: 700; }
+
+        .hero-text .tagline {
+            color: var(--gold); font-size: 18px; letter-spacing: 6px;
+            text-transform: uppercase; margin-bottom: 30px; font-weight: 500;
+        }
+
+        .hero-text p { color: var(--text-muted); font-size: 18px; line-height: 1.6; margin-bottom: 40px; }
+
+        .btn-luxury {
+            display: inline-block; padding: 15px 40px; border: 1px solid var(--gold);
+            color: #fff; text-decoration: none; text-transform: uppercase;
+            letter-spacing: 2px; font-size: 14px; transition: all 0.3s;
+            background: transparent; cursor: pointer; border-radius: 0;
+        }
+
+        .btn-luxury:hover {
+            background-color: var(--gold); color: #000; font-weight: 600;
+            box-shadow: 0 0 20px rgba(196, 160, 82, 0.4);
+        }
+
+        .hero-image {
+            position: relative; border: 1px solid var(--gold); height: 550px; overflow: hidden;
+        }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* SECTIONS GENERAL */
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 42px; text-transform: uppercase; letter-spacing: 4px; margin: 0 0 15px 0; }
+        .section-header h2 span { color: var(--gold); }
+        .section-header .divider { width: 80px; height: 2px; background-color: var(--gold); margin: 0 auto 20px auto; }
+
+        /* UPGRADED CATEGORIES GRID */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            padding: 50px 30px; text-align: center; transition: all 0.3s; cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: var(--gold); transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(196, 160, 82, 0.1);
+        }
+
+        .category-card .icon { font-size: 45px; color: var(--gold); margin-bottom: 25px; }
+        .category-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 2px; margin: 0 0 15px 0; text-transform: uppercase; }
+        .category-card p { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin: 0; }
+
+        /* INNER COLLECTION PAGES STYLING */
+        .collection-view { padding-top: 140px; min-height: 80vh; max-width: 1200px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+        .back-nav { margin-bottom: 40px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        
+        .product-card { background-color: var(--bg-card); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card:hover { border-color: var(--gold); }
+        
+        /* IMAGE SLIDER CSS */
+        .product-img-box { position: relative; height: 350px; border-bottom: 1px solid var(--border-color); background-color: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .product-img-box img { width: 100%; height: 100%; object-fit: contain; display: none; }
+        .product-img-box img.slide-active { display: block; animation: fade-in 0.3s ease-in-out; }
+        
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10; font-size: 14px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; opacity: 0.7; }
+        .slider-btn:hover { background: var(--gold); color: #000; opacity: 1; border-color: var(--gold); }
+        .slider-btn.prev { left: 10px; }
+        .slider-btn.next { right: 10px; }
+        
+        .slider-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+        .slider-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: background 0.3s; }
+        .slider-dot.active { background: var(--gold); transform: scale(1.2); }
+
+        .product-info { padding: 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-info h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase; }
+        .product-meta { color: var(--text-muted); font-size: 14px; letter-spacing: 1px; margin-bottom: 15px; line-height: 1.5; }
+        .product-price { font-size: 20px; font-weight: 700; color: var(--text-light); margin-bottom: 15px; }
+        .price-gram { color: var(--gold); font-size: 14px; display: block; margin-top: 5px; font-weight: normal; letter-spacing: 1px; }
+
+        /* STOCK LABELS STYLING */
+        .product-stock {
+            font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+            font-weight: 700; margin-bottom: 12px; padding: 4px 10px;
+            display: inline-block; border-radius: 2px;
+        }
+        .stock-in { color: #2ecc71; background-color: rgba(46, 204, 113, 0.1); }
+        .stock-low { color: #e67e22; background-color: rgba(230, 126, 34, 0.1); }
+
+        /* COLLECTION PAGE CONTACT BANNER */
+        .page-contact-banner {
+            border-top: 1px solid var(--border-color); padding: 80px 0; text-align: center; margin-top: 40px;
+        }
+        .page-contact-banner h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 15px; }
+        .page-contact-banner p { color: var(--text-muted); margin-bottom: 30px; font-size: 18px; }
+
+        /* CONTACT SECTION STYLING */
+        .contact-box {
+            max-width: 650px; margin: 0 auto 80px auto; background: var(--bg-card); 
+            padding: 60px; border: 1px solid var(--gold); text-align: center;
+        }
+        .contact-box h3 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-whatsapp {
+            display: inline-block; padding: 15px 40px; background-color: #25D366; 
+            color: #000; text-decoration: none; text-transform: uppercase; font-weight: 700;
+            letter-spacing: 2px; font-size: 14px; transition: all 0.3s; margin: 10px;
+        }
+        .btn-whatsapp:hover { background-color: #1ebe57; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+        
+        .btn-email {
+            display: inline-block; padding: 15px 40px; background-color: transparent; 
+            color: var(--text-light); text-decoration: none; text-transform: uppercase; border: 1px solid var(--text-muted);
+            letter-spacing: 2px; font-size: 14px; transition: all 0.3s; margin: 10px;
+        }
+        .btn-email:hover { border-color: var(--text-light); background-color: rgba(255,255,255,0.05); }
+
+        /* FOOTER */
+        footer { background-color: #020202; border-top: 1px solid var(--border-color); padding: 80px 20px; text-align: center; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 36px; letter-spacing: 4px; margin-bottom: 15px; text-transform: uppercase; }
+        .footer-logo span { color: var(--gold); }
+        .location-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 30px 0; }
+        .badge { border: 1px solid var(--gold); padding: 10px 25px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-image { height: 400px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="navigateTo('home')">Tigris <span>Jewelry</span></div>
+            <nav>
+                <a onclick="navigateTo('home')">Home</a>
+                <a onclick="navigateTo('contact')">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= MAIN HOMEPAGE ================= -->
+    <div id="home-page" class="app-page active">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <div class="tagline">Established 2025</div>
+                    <h1>Tigris <span>Jewelry</span></h1>
+                    <p>An elite blend of ancient Mesopotamian legacy and international luxury standards. Crafted inside the heart of the Iraqi Market and proudly serving distinguished clientele within the US Embassy Baghdad compound.</p>
+                    <a href="#collections" class="btn-luxury">Explore Master Collection</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://i.imgur.com/xHWOutC.jpg" alt="Tigris Brand Ambassador Portrait">
+                </div>
+            </div>
+        </section>
+
+        <!-- FULL COLLECTIONS GRID -->
+        <section id="collections">
+            <div class="section-header">
+                <h2>Our <span>Collections</span></h2>
+                <div class="divider"></div>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Select a category below to explore our curated selection of fine metals, sacred art, and heritage stones.</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- NEED A REPAIR CARD -->
+                <div class="category-card" onclick="navigateTo('repairs')">
+                    <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3>Need a Repair?</h3>
+                    <p>Professional watch link adjustments, precise ring resizing, and elite restoration services.</p>
+                </div>
+                <!-- WATCHES CARD (NEW) -->
+                <div class="category-card" onclick="navigateTo('watches')">
+                    <div class="icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Luxury Watches</h3>
+                    <p>Exclusive collection of premium timepieces and elegant wristwear.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('fullsets')">
+                    <div class="icon"><i class="fa-solid fa-gem"></i><i class="fa-solid fa-ring"></i></div>
+                    <h3>Full Sets</h3>
+                    <p>Complete matching sets featuring exquisite necklaces, bracelets, earrings, and rings.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('rings')">
+                    <div class="icon"><i class="fa-solid fa-ring"></i></div>
+                    <h3>Rings</h3>
+                    <p>An exquisite selection of premium women's rings, featuring fine silver designs and elegant unique styles.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('earrings')">
+                    <div class="icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Earrings</h3>
+                    <p>Flawless rutilated quartz drops engineered for elegant sophisticated movement.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('necklaces')">
+                    <div class="icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Necklaces</h3>
+                    <p>Signature centerpieces and pendants capturing ancient Mesopotamian motifs.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('bracelets')">
+                    <div class="icon"><i class="fa-solid fa-link"></i></div>
+                    <h3>Bracelets</h3>
+                    <p>Woven silver cuffs and delicate gemstone wrists wraps for daily elegance.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('chains')">
+                    <div class="icon"><i class="fa-solid fa-link"></i></div>
+                    <h3>Chains</h3>
+                    <p>Durable, intricate silver linkages designed to stand alone or carry heavy amulets.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('mens')">
+                    <div class="icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Men's Collection</h3>
+                    <p>Bold statement rings and distinguished heavy silver accessories.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('amber')">
+                    <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+                    <h3>The Amber Collection</h3>
+                    <p>Authentic Iraqi Kahrab (Amber) rosaries and pieces, renowned for natural scent.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('sacred')">
+                    <div class="icon"><i class="fa-solid fa-dove"></i></div>
+                    <h3>Heritage & Sacred Art</h3>
+                    <p>Handcrafted silver animal figures and sacred Christian devotionals & icons.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('artisan')">
+                    <div class="icon"><i class="fa-solid fa-hammer"></i></div>
+                    <h3>Artisan Handcrafted</h3>
+                    <p>Custom-forged local masterpieces including traditional Iraqi Khartoush.</p>
+                </div>
+                <div class="category-card" onclick="navigateTo('heavysilver')">
+                    <div class="icon"><i class="fa-solid fa-weight-hanging"></i></div>
+                    <h3>Investment Silver</h3>
+                    <p>Premium, raw heavy-weight .925 Silver items sold transparently by the gram.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= SUB-PAGES WITH BANNERS ================= -->
+    
+    <!-- CONTACT US PAGE -->
+    <div id="contact-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Contact <span>Us</span></h2><div class="divider"></div></div>
+        
+        <div class="contact-box">
+            <i class="fa-brands fa-whatsapp" style="font-size: 60px; color: #25D366; margin-bottom: 20px;"></i>
+            <h3>Direct Inquiries & Orders</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">Have a question about a specific piece? Want to reserve an item or discuss custom designs? Reach out via WhatsApp or Email.</p>
+            
+            <a href="https://wa.me/9647838376645" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Inquiry</a>
+            <a href="mailto:ozmofredo@gmail.com" class="btn-email"><i class="fa-solid fa-envelope"></i> Email Us</a>
+            
+            <hr style="border-color: #1a1a1a; margin: 40px 0;">
+            
+            <p style="color: var(--gold); font-size: 16px; letter-spacing: 3px; font-weight: bold; margin-bottom: 15px;">VISIT OUR BOUTIQUE</p>
+            <p style="color: var(--text-light); font-size: 18px;">US Embassy Baghdad Compound<br><span style="color: var(--text-muted); font-size: 15px;">Inside The Iraqi Market</span></p>
+        </div>
+    </div></div>
+
+    <!-- REUSABLE SALES CONTACT BANNER COMPONENT -->
+    <template id="contact-banner">
+        <div class="page-contact-banner">
+            <h3>Ready to make it yours?</h3>
+            <p>Reach out and secure your favorite item now.</p>
+            <a href="https://wa.me/9647838376645" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Reserve on WhatsApp</a>
+            <a href="mailto:ozmofredo@gmail.com" class="btn-email"><i class="fa-solid fa-envelope"></i> Email Inquiry</a>
+        </div>
+    </template>
+
+    <!-- REPAIRS & RESTORATION PAGE -->
+    <div id="repairs-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Repair & <span>Restoration</span></h2><div class="divider"></div></div>
+        
+        <div style="max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-muted); font-size: 16px; padding: 0 20px;">
+            <p style="color: var(--text-light); font-size: 20px; font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 40px; letter-spacing: 1px;">
+                Preserving the Value and Elegance of Your Finest Timepieces and Jewelry.
+            </p>
+            <p>At Tigris Jewelry, we understand that your watches and jewelry are more than just accessories—they are valuable investments and cherished heirlooms. Our expert artisans provide precision maintenance and restoration services right here within the US Embassy compound.</p>
+            
+            <h3 style="color: var(--gold); font-family: 'Playfair Display', serif; margin-top: 40px; text-transform: uppercase; letter-spacing: 1px; font-size: 18px;">Our Specialized Services Include:</h3>
+            <ul style="padding-left: 20px; margin-bottom: 40px; list-style-type: square;">
+                <li style="margin-bottom: 12px;"><strong style="color: var(--text-light);">Watch Link Adjustment & Sizing:</strong> Professional resizing for luxury watches to ensure a flawless, comfortable fit on your wrist.</li>
+                <li style="margin-bottom: 12px;"><strong style="color: var(--text-light);">Ring Resizing & Scaling:</strong> Precision scaling for gold and silver rings, adjusting sizes up or down without compromising the structural integrity or engraving of the piece.</li>
+                <li style="margin-bottom: 12px;"><strong style="color: var(--text-light);">Jewelry Soldering & Laser Welding:</strong> Repairing broken chains, necklace clasps, and fractured bracelet links with seamless precision.</li>
+                <li style="margin-bottom: 12px;"><strong style="color: var(--text-light);">Stone Tightening & Replacement:</strong> Securing loose diamonds, zircons, or heritage stones, and replacing missing crystals to restore original brilliance.</li>
+                <li style="margin-bottom: 12px;"><strong style="color: var(--text-light);">Professional Ultra-Sonic Cleaning & Polishing:</strong> Removing years of microscopic wear, tarnish, and dust to bring back the mirror-like shine of your precious metals.</li>
+            </ul>
+        </div>
+        
+        <!-- CUSTOM REPAIR CONTACT BANNER -->
+        <div class="page-contact-banner">
+            <h3>Expert repair and professional restoration.</h3>
+            <p>Contact us to renew your favorite pieces.</p>
+            <a href="https://wa.me/9647838376645" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Contact on WhatsApp</a>
+            <a href="mailto:ozmofredo@gmail.com" class="btn-email"><i class="fa-solid fa-envelope"></i> Email Repair Request</a>
+        </div>
+    </div></div>
+
+    <!-- WATCHES PAGE (NEW) -->
+    <div id="watches-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Luxury <span>Watches</span></h2><div class="divider"></div></div>
+        <div class="product-grid" id="watches-grid">
+            <!-- Watches will go here -->
+        </div>
+        <div id="watches-banner-hook"></div>
+    </div></div>
+
+    <!-- FULL SETS -->
+    <div id="fullsets-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Full <span>Sets</span></h2><div class="divider"></div></div>
+        <div class="product-grid" id="fullsets-grid">
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/hMh9S4L.jpeg" class="slide-active" alt="Full Silver Zircon Set"></div>
+                <div class="product-info">
+                    <div><span class="product-stock stock-in">In Stock / متوفر</span><h4>Full Silver Zircon Set / طقم فضة كامل مرصع بالزاركون</h4><div class="product-meta">Complete Premium .925 Silver Masterpiece</div></div>
+                    <div><div class="product-price">$226.00</div></div>
+                </div>
+            </div>
+        </div>
+        <div id="fullsets-banner-hook"></div>
+    </div></div>
+
+    <!-- RINGS -->
+    <div id="rings-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Rings <span>Collection</span></h2><div class="divider"></div></div>
+        <div class="product-grid">
+            <!-- Authentic Turkish Ring -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/uaaT5k9.jpg" class="slide-active" alt="Authentic Turkish Ring"></div>
+                <div class="product-info">
+                    <div><span class="product-stock stock-low">Only 4 Pieces Left</span><h4>Authentic Turkish Ring</h4><div class="product-meta">Premium Silver Framework</div></div>
+                    <div><div class="product-price"><span class="price-gram">$10.00 USD / Per Gram</span></div></div>
+                </div>
+            </div>
+            
+            <!-- Elegant Silver Zircon Ring -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/ww56ZSe.jpeg" class="slide-active" alt="Elegant Silver Zircon Ring"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces In Stock</span>
+                        <h4>Elegant Silver Zircon Ring / خاتم الفضة الأنيق بالزاركون</h4>
+                        <div class="product-meta">A beautifully crafted .925 sterling silver ring featuring a radiant zircon centerpiece, designed for timeless elegance.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$27.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classic Emerald-Cut Zircon Silver Ring (MULTI-IMAGE SLIDER) -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <img src="https://i.imgur.com/2okV3DA.jpeg" class="slide-active" alt="Classic Emerald-Cut Zircon Ring Angle 1">
+                    <img src="https://i.imgur.com/utmXqro.jpeg" alt="Classic Emerald-Cut Zircon Ring Angle 2">
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goToSlide(this, 0)"></div>
+                        <div class="slider-dot" onclick="goToSlide(this, 1)"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">2 Pieces In Stock</span>
+                        <h4>Classic Emerald-Cut Silver Ring / خاتم الزاركون الزمردي الكلاسيكي</h4>
+                        <div class="product-meta">A beautifully crafted .925 sterling silver ring featuring a captivating emerald-cut zircon centerpiece, designed for sophisticated elegance. <br><span style="color:var(--gold); font-size:11px; margin-top:5px; display:block;"><i class="fa-regular fa-hand-pointer"></i> Swipe or click arrows to view more angles</span></div>
+                    </div>
+                    <div>
+                        <div class="product-price">$42.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delicate Zircon Silver Ring -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/ZdKZyyq.jpeg" class="slide-active" alt="Delicate Zircon Silver Ring"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces In Stock</span>
+                        <h4>Delicate Zircon Silver Ring / خاتم الفضة الناعم بالزاركون</h4>
+                        <div class="product-meta">A beautifully crafted .925 sterling silver ring featuring a radiant zircon centerpiece, designed for timeless elegance.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$20.00</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="rings-banner-hook"></div>
+    </div></div>
+
+    <!-- MEN'S -->
+    <div id="mens-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Men's <span>Collection</span></h2><div class="divider"></div></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/KoOtSH2.jpeg" class="slide-active" alt="Men's Premium Silver Ring"></div>
+                <div class="product-info">
+                    <div><span class="product-stock stock-in">14 Pieces In Stock</span><h4>Men's Premium Silver Ring</h4><div class="product-meta">Solid .925 Sterling Silver</div></div>
+                    <div><div class="product-price">$36.00</div></div>
+                </div>
+            </div>
+        </div>
+        <div id="mens-banner-hook"></div>
+    </div></div>
+    
+    <!-- SACRED ART & HOME -->
+    <div id="sacred-page" class="app-page"><div class="collection-view">
+        <div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
+        <div class="section-header"><h2>Heritage & <span>Sacred Art</span></h2><div class="divider"></div></div>
+        <div class="product-grid" id="sacred-grid">
+            <!-- Sacred Jesus Silver Icon -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/CMO8Eq1.jpeg" class="slide-active" alt="Sacred Jesus Silver Icon"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces Available</span>
+                        <h4>Sacred Jesus Silver Icon / أيقونة يسوع الفضية المقدسة</h4>
+                        <div class="product-meta">Handcrafted Silver / Assorted Sizes</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$50.00</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sacred Mother and Child Silver Icon -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/KpyBLE6.jpeg" class="slide-active" alt="Sacred Mother and Child Silver Icon"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces Available</span>
+                        <h4>Sacred Mother and Child Silver Icon / أيقونة الأم المقدسة والطفل الفضية</h4>
+                        <div class="product-meta">Premium .925 Silver / Assorted Designs</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$55.00</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sacred Lord Jesus Silver Icon (Simple) -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/spWNrUV.jpeg" class="slide-active" alt="Sacred Lord Jesus Silver Icon (Simple)"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces Available</span>
+                        <h4>Sacred Lord Jesus Silver Icon (Simple) / أيقونة يسوع الفضية البسيطة</h4>
+                        <div class="product-meta">Silver-Tone / Assorted Designs</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$55.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sacred-banner-hook"></div>
+    </div></div>
+
+    <!-- OTHER EMPTY COLLECTIONS -->
+    <div id="earrings-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Earrings</h2><div class="divider"></div></div><div class="product-grid"></div><div id="earrings-banner-hook"></div></div></div>
+    <div id="necklaces-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Necklaces</h2><div class="divider"></div></div><div class="product-grid"></div><div id="necklaces-banner-hook"></div></div></div>
+    <div id="bracelets-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Bracelets</h2><div class="divider"></div></div><div class="product-grid">
+            <!-- Silver Zircon Bracelet $86 -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/OBNdtRa.jpeg" class="slide-active" alt="Silver Zircon Bracelet"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">In Stock / متوفر</span>
+                        <h4>Silver Zircon Bracelet / سوار فضة 925 بالزاركون</h4>
+                        <div class="product-meta">Elegant .925 silver bracelet with sparkling zircon details. Adds a touch of brilliance.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$86.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Van Cleef Bracelet $19 -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/FZcUeOs.jpeg" class="slide-active" alt="Van Cleef Bracelet"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">In Stock / متوفر</span>
+                        <h4>Van Cleef Bracelet / سوار فان كليف</h4>
+                        <div class="product-meta">Classic clover design. A timeless piece to elevate your everyday style.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$19.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Silver Zircon Bracelet -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/x1hyBFy.jpeg" class="slide-active" alt="Silver Zircon Bracelet"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces In Stock</span>
+                        <h4>Silver Zircon Bracelet / سوار فضة عيار 925 مرصع بالزاركون</h4>
+                        <div class="product-meta">Premium .925 sterling silver embellished with radiant zircon stones.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$67.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pink Van Cleef Bracelet -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/txyGIo9.jpeg" class="slide-active" alt="Pink Van Cleef Bracelet"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-low">Last Piece!</span>
+                        <h4>Pink Van Cleef Bracelet / سوار فان كليف وردي</h4>
+                        <div class="product-meta">Elegant pink clover design. A timeless piece to elevate any look.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$49.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Van Cleef Style Bracelet -->
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://i.imgur.com/iOo4G9H.jpeg" class="slide-active" alt="Van Cleef Style Bracelet"></div>
+                <div class="product-info">
+                    <div>
+                        <span class="product-stock stock-in">3 Pieces Available</span>
+                        <h4>Van Cleef Style Bracelet / سوار بتصميم فان كليف</h4>
+                        <div class="product-meta">Classic clover design. Adds a touch of luxury and softness to your daily look.</div>
+                    </div>
+                    <div>
+                        <div class="product-price">$15.00</div>
+                    </div>
+                </div>
+            </div>
+</div><div id="bracelets-banner-hook"></div></div></div>
+    <div id="chains-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Chains</h2><div class="divider"></div></div><div class="product-grid"></div><div id="chains-banner-hook"></div></div></div>
+    <div id="amber-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Amber</h2><div class="divider"></div></div><div class="product-grid"></div><div id="amber-banner-hook"></div></div></div>
+    <div id="artisan-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Artisan</h2><div class="divider"></div></div><div class="product-grid"></div><div id="artisan-banner-hook"></div></div></div>
+    <div id="heavysilver-page" class="app-page"><div class="collection-view"><div class="back-nav"><button class="btn-luxury" onclick="navigateTo('home')">Back</button></div><div class="section-header"><h2>Investment Silver</h2><div class="divider"></div></div><div class="product-grid"></div><div id="heavysilver-banner-hook"></div></div></div>
+
+    <!-- FOOTER -->
+    <footer id="visit">
+        <div class="footer-logo">Tigris <span>Jewelry</span></div>
+        <div class="location-badges">
+            <div class="badge">US Embassy Baghdad</div>
+            <div class="badge">The Iraqi Market</div>
+        </div>
+        <div class="copyright">&copy; 2026 Tigris Jewelry. Authorized Embassy Retailer.</div>
+    </footer>
+
+    <!-- INTERACTIVITY MANAGEMENT & SLIDER LOGIC -->
+    <script>
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.app-page');
+            pages.forEach(page => { page.classList.remove('active'); });
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Image Slider Logic
+        function changeSlide(btn, direction) {
+            const imgBox = btn.parentElement;
+            const images = imgBox.querySelectorAll('img');
+            const dots = imgBox.querySelectorAll('.slider-dot');
+            if(images.length <= 1) return;
+
+            let activeIndex = Array.from(images).findIndex(img => img.classList.contains('slide-active'));
+            
+            images[activeIndex].classList.remove('slide-active');
+            if (dots.length) dots[activeIndex].classList.remove('active');
+            
+            activeIndex += direction;
+            if (activeIndex >= images.length) activeIndex = 0;
+            if (activeIndex < 0) activeIndex = images.length - 1;
+            
+            images[activeIndex].classList.add('slide-active');
+            if (dots.length) dots[activeIndex].classList.add('active');
+        }
+
+        function goToSlide(dot, index) {
+            const imgBox = dot.closest('.product-img-box');
+            const images = imgBox.querySelectorAll('img');
+            const dots = imgBox.querySelectorAll('.slider-dot');
+            
+            images.forEach(img => img.classList.remove('slide-active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            images[index].classList.add('slide-active');
+            dots[index].classList.add('active');
+        }
+
+        // Swipe support for touch devices
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe(e);
+        }, {passive: true});
+
+        function handleSwipe(e) {
+            const swipeThreshold = 50;
+            const imgBox = e.target.closest('.product-img-box');
+            if (!imgBox) return; // Only trigger swipe if touching an image box
+            
+            const nextBtn = imgBox.querySelector('.slider-btn.next');
+            const prevBtn = imgBox.querySelector('.slider-btn.prev');
+            if (!nextBtn || !prevBtn) return; // Not a slider
+
+            if (touchendX < touchstartX - swipeThreshold) {
+                // Swiped Left -> Next Image
+                changeSlide(nextBtn, 1);
+            }
+            if (touchendX > touchstartX + swipeThreshold) {
+                // Swiped Right -> Previous Image
+                changeSlide(prevBtn, -1);
+            }
+        }
+
+        // Inject Banner into all catalog pages automatically (except repairs which has a custom one)
+        document.addEventListener('DOMContentLoaded', () => {
+            const bannerTemplate = document.getElementById('contact-banner');
+            const hooks = document.querySelectorAll('[id$="-banner-hook"]');
+            hooks.forEach(hook => {
+                const clone = bannerTemplate.content.cloneNode(true);
+                hook.appendChild(clone);
+            });
+        });
+    </script>
+</body>
+</html>
